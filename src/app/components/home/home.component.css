@@ -1,0 +1,37 @@
+.card3{
+  height: 95px;
+  width: 115px;
+  margin-bottom: 30px;
+}
+.card{
+  border: 0 !important;
+
+}
+.center-card{
+
+  width: 41%;
+}
+#secondBox{
+  padding: 3%!important;
+  height: 505px!important;
+}
+#desCard{
+  padding-top: 5%;
+  padding-left: 25%;
+  padding-right: 25%;
+  padding-bottom: 5%;
+  background-color: aqua;
+  }
+#desCard h3{
+  color: #fff;
+  margin: 15px;
+font-weight: 500;
+}
+#desCard button{
+  width: 35% !important;
+}
+#desCard img{
+  height: 45px;
+  width: 100%;
+}
+

@@ -1,0 +1,19 @@
+#footer {
+  background-color: black;
+  color: #fff;
+}
+#leftsidefooter{
+  padding: 50px;
+}
+.list-group-item{
+  border-top: none;
+  border-bottom: none;
+  mix-blend-mode: multiply;
+  border-left: none;
+  }
+#custompadding{
+  padding-top: 17px;
+}
+#nofooterborder{
+  border: none;
+}

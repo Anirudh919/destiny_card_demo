@@ -1,0 +1,14 @@
+.container{
+  margin-top: 5%;
+}
+img{
+  height: 250px;
+  width: 425px;
+  margin-left: 10%;
+}
+#para1{
+  font-weight: 500;
+}
+#para1 span{
+  color: green;
+}
