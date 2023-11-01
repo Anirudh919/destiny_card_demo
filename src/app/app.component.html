@@ -1,484 +1,110 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<style>
-  :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .spacer {
-    flex: 1;
-  }
-
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-  }
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 8px;
-  }
-
-  .toolbar #youtube-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo:hover,
-  .toolbar #youtube-logo:hover {
-    opacity: 0.8;
-  }
-
-  .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  svg.material-icons {
-    height: 24px;
-    width: auto;
-  }
-
-  svg.material-icons:not(:last-child) {
-    margin-right: 8px;
-  }
-
-  .card svg.material-icons path {
-    fill: #888;
-  }
-
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 16px;
-  }
-
-  .card {
-    all: unset;
-    border-radius: 4px;
-    border: 1px solid #eee;
-    background-color: #fafafa;
-    height: 40px;
-    width: 200px;
-    margin: 0 8px 16px;
-    padding: 16px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.2s ease-in-out;
-    line-height: 24px;
-  }
-
-  .card-container .card:not(:last-child) {
-    margin-right: 0;
-  }
-
-  .card.card-small {
-    height: 16px;
-    width: 168px;
-  }
-
-  .card-container .card:not(.highlight-card) {
-    cursor: pointer;
-  }
-
-  .card-container .card:not(.highlight-card):hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
-  }
-
-  .card-container .card:not(.highlight-card):hover .material-icons path {
-    fill: rgb(105, 103, 103);
-  }
-
-  .card.highlight-card {
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-    border: none;
-    width: auto;
-    min-width: 30%;
-    position: relative;
-  }
-
-  .card.card.highlight-card span {
-    margin-left: 60px;
-  }
-
-  svg#rocket {
-    width: 80px;
-    position: absolute;
-    left: -10px;
-    top: -24px;
-  }
-
-  svg#rocket-smoke {
-    height: calc(100vh - 95px);
-    position: absolute;
-    top: 10px;
-    right: 180px;
-    z-index: -10;
-  }
-
-  a,
-  a:visited,
-  a:hover {
-    color: #1976d2;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #125699;
-  }
-
-  .terminal {
-    position: relative;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 6px;
-    padding-top: 45px;
-    margin-top: 8px;
-    overflow: hidden;
-    background-color: rgb(15, 15, 16);
-  }
-
-  .terminal::before {
-    content: "\2022 \2022 \2022";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: rgb(58, 58, 58);
-    color: #c2c3c4;
-    width: 100%;
-    font-size: 2rem;
-    line-height: 0;
-    padding: 14px 0;
-    text-indent: 4px;
-  }
-
-  .terminal pre {
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-    color: white;
-    padding: 0 1rem 1rem;
-    margin: 0;
-  }
-
-  .circle-link {
-    height: 40px;
-    width: 40px;
-    border-radius: 40px;
-    margin: 8px;
-    background-color: white;
-    border: 1px solid #eeeeee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: 1s ease-out;
-  }
-
-  .circle-link:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
-  }
-
-  footer a {
-    display: flex;
-    align-items: center;
-  }
-
-  .github-star-badge {
-    color: #24292e;
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    padding: 3px 10px;
-    border: 1px solid rgba(27,31,35,.2);
-    border-radius: 3px;
-    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
-    margin-left: 4px;
-    font-weight: 600;
-  }
-
-  .github-star-badge:hover {
-    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
-    border-color: rgba(27,31,35,.35);
-    background-position: -.5em;
-  }
-
-  .github-star-badge .material-icons {
-    height: 16px;
-    width: 16px;
-    margin-right: 4px;
-  }
-
-  svg#clouds {
-    position: fixed;
-    bottom: -160px;
-    left: -230px;
-    z-index: -10;
-    width: 1920px;
-  }
-
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-    .card-container > *:not(.circle-link) ,
-    .terminal {
-      width: 100%;
-    }
-
-    .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
-    }
-
-    .card.highlight-card span {
-      margin-left: 72px;
-    }
-
-    svg#rocket-smoke {
-      right: 120px;
-      transform: rotate(-5deg);
-    }
-  }
-
-  @media screen and (max-width: 575px) {
-    svg#rocket-smoke {
-      display: none;
-      visibility: hidden;
-    }
-  }
-</style>
-
-<!-- Toolbar -->
-<div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-  />
-  <span>Welcome</span>
-    <div class="spacer"></div>
-    <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
-      <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
-        <rect width="400" height="400" fill="none"/>
-        <path d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" fill="#fff"/>
-      </svg>
-    </a>
-    <a aria-label="Angular on YouTube" target="_blank" rel="noopener" href="https://youtube.com/angular" title="YouTube">
-      <svg id="youtube-logo" height="24" width="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff">
-        <path d="M0 0h24v24H0V0z" fill="none"/>
-        <path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/>
-      </svg>
-    </a>
-</div>
-
-<div class="content" role="main">
-
-  <!-- Highlight Card -->
-  <div class="card highlight-card card-small">
-
-    <svg id="rocket" xmlns="http://www.w3.org/2000/svg" width="101.678" height="101.678" viewBox="0 0 101.678 101.678">
-      <title>Rocket Ship</title>
-      <g id="Group_83" data-name="Group 83" transform="translate(-141 -696)">
-        <circle id="Ellipse_8" data-name="Ellipse 8" cx="50.839" cy="50.839" r="50.839" transform="translate(141 696)" fill="#dd0031"/>
-        <g id="Group_47" data-name="Group 47" transform="translate(165.185 720.185)">
-          <path id="Path_33" data-name="Path 33" d="M3.4,42.615a3.084,3.084,0,0,0,3.553,3.553,21.419,21.419,0,0,0,12.215-6.107L9.511,30.4A21.419,21.419,0,0,0,3.4,42.615Z" transform="translate(0.371 3.363)" fill="#fff"/>
-          <path id="Path_34" data-name="Path 34" d="M53.3,3.221A3.09,3.09,0,0,0,50.081,0,48.227,48.227,0,0,0,18.322,13.437c-6-1.666-14.991-1.221-18.322,7.218A33.892,33.892,0,0,1,9.439,25.1l-.333.666a3.013,3.013,0,0,0,.555,3.553L23.985,43.641a2.9,2.9,0,0,0,3.553.555l.666-.333A33.892,33.892,0,0,1,32.647,53.3c8.55-3.664,8.884-12.326,7.218-18.322A48.227,48.227,0,0,0,53.3,3.221ZM34.424,9.772a6.439,6.439,0,1,1,9.106,9.106,6.368,6.368,0,0,1-9.106,0A6.467,6.467,0,0,1,34.424,9.772Z" transform="translate(0 0.005)" fill="#fff"/>
-        </g>
-      </g>
-    </svg>
-
-    <span>{{ title }} app is running!</span>
-
-    <svg id="rocket-smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
-      <title>Rocket Ship Smoke</title>
-      <path id="Path_40" data-name="Path 40" d="M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z" transform="translate(-147.025 -140.939)" fill="#f5f5f5"/>
-    </svg>
-
-  </div>
-
-  <!-- Resources -->
-  <h2>Resources</h2>
-  <p>Here are some links to help you get started:</p>
-
-  <div class="card-container">
-    <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-      <span>Learn Angular</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
-
-    <a class="card" target="_blank" rel="noopener" href="https://angular.io/cli">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
-      <span>CLI Documentation</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </a>
-
-    <a class="card" target="_blank" rel="noopener" href="https://material.angular.io">
-      <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px" width="21.813" height="23.453" viewBox="0 0 179.2 192.7"><path fill="#ffa726" d="M89.4 0 0 32l13.5 118.4 75.9 42.3 76-42.3L179.2 32 89.4 0z"/><path fill="#fb8c00" d="M89.4 0v192.7l76-42.3L179.2 32 89.4 0z"/><path fill="#ffe0b2" d="m102.9 146.3-63.3-30.5 36.3-22.4 63.7 30.6-36.7 22.3z"/><path fill="#fff3e0" d="M102.9 122.8 39.6 92.2l36.3-22.3 63.7 30.6-36.7 22.3z"/><path fill="#fff" d="M102.9 99.3 39.6 68.7l36.3-22.4 63.7 30.6-36.7 22.4z"/></svg>
-      <span>Angular Material</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </a>
-
-    <a class="card" target="_blank" rel="noopener" href="https://blog.angular.io/">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></svg>
-      <span>Angular Blog</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </a>
-
-    <a class="card" target="_blank" rel="noopener" href="https://angular.io/devtools/">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M14.73,13.31C15.52,12.24,16,10.93,16,9.5C16,5.91,13.09,3,9.5,3S3,5.91,3,9.5C3,13.09,5.91,16,9.5,16 c1.43,0,2.74-0.48,3.81-1.27L19.59,21L21,19.59L14.73,13.31z M9.5,14C7.01,14,5,11.99,5,9.5S7.01,5,9.5,5S14,7.01,14,9.5 S11.99,14,9.5,14z"/><polygon points="10.29,8.44 9.5,6 8.71,8.44 6.25,8.44 8.26,10.03 7.49,12.5 9.5,10.97 11.51,12.5 10.74,10.03 12.75,8.44"/></g></g></svg>
-      <span>Angular DevTools</span>
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </a>
-
-  </div>
-
-  <!-- Next Steps -->
-  <h2>Next Steps</h2>
-  <p>What do you want to do next with your app?</p>
-
-  <input type="hidden" #selection>
-
-  <div class="card-container">
-    <button class="card card-small" (click)="selection.value = 'component'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>New Component</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'material'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Angular Material</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'pwa'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Add PWA Support</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'dependency'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Add Dependency</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'test'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Run and Watch Tests</span>
-    </button>
-
-    <button class="card card-small" (click)="selection.value = 'build'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Build for Production</span>
-    </button>
-  </div>
-
-  <!-- Terminal -->
-  <div class="terminal" [ngSwitch]="selection.value">
-      <pre *ngSwitchDefault>ng generate component xyz</pre>
-      <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
-      <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
-      <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-      <pre *ngSwitchCase="'test'">ng test</pre>
-      <pre *ngSwitchCase="'build'">ng build</pre>
-  </div>
-
-  <!-- Links -->
-  <div class="card-container">
-    <a class="circle-link" title="Find a Local Meetup" href="https://www.meetup.com/find/?keywords=angular" target="_blank" rel="noopener">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24.607" height="23.447" viewBox="0 0 24.607 23.447">
-        <title>Meetup Logo</title>
-        <path id="logo--mSwarm" d="M21.221,14.95A4.393,4.393,0,0,1,17.6,19.281a4.452,4.452,0,0,1-.8.069c-.09,0-.125.035-.154.117a2.939,2.939,0,0,1-2.506,2.091,2.868,2.868,0,0,1-2.248-.624.168.168,0,0,0-.245-.005,3.926,3.926,0,0,1-2.589.741,4.015,4.015,0,0,1-3.7-3.347,2.7,2.7,0,0,1-.043-.38c0-.106-.042-.146-.143-.166a3.524,3.524,0,0,1-1.516-.69A3.623,3.623,0,0,1,2.23,14.557a3.66,3.66,0,0,1,1.077-3.085.138.138,0,0,0,.026-.2,3.348,3.348,0,0,1-.451-1.821,3.46,3.46,0,0,1,2.749-3.28.44.44,0,0,0,.355-.281,5.072,5.072,0,0,1,3.863-3,5.028,5.028,0,0,1,3.555.666.31.31,0,0,0,.271.03A4.5,4.5,0,0,1,18.3,4.7a4.4,4.4,0,0,1,1.334,2.751,3.658,3.658,0,0,1,.022.706.131.131,0,0,0,.1.157,2.432,2.432,0,0,1,1.574,1.645,2.464,2.464,0,0,1-.7,2.616c-.065.064-.051.1-.014.166A4.321,4.321,0,0,1,21.221,14.95ZM13.4,14.607a2.09,2.09,0,0,0,1.409,1.982,4.7,4.7,0,0,0,1.275.221,1.807,1.807,0,0,0,.9-.151.542.542,0,0,0,.321-.545.558.558,0,0,0-.359-.534,1.2,1.2,0,0,0-.254-.078c-.262-.047-.526-.086-.787-.138a.674.674,0,0,1-.617-.75,3.394,3.394,0,0,1,.218-1.109c.217-.658.509-1.286.79-1.918a15.609,15.609,0,0,0,.745-1.86,1.95,1.95,0,0,0,.06-1.073,1.286,1.286,0,0,0-1.051-1.033,1.977,1.977,0,0,0-1.521.2.339.339,0,0,1-.446-.042c-.1-.092-.2-.189-.307-.284a1.214,1.214,0,0,0-1.643-.061,7.563,7.563,0,0,1-.614.512A.588.588,0,0,1,10.883,8c-.215-.115-.437-.215-.659-.316a2.153,2.153,0,0,0-.695-.248A2.091,2.091,0,0,0,7.541,8.562a9.915,9.915,0,0,0-.405.986c-.559,1.545-1.015,3.123-1.487,4.7a1.528,1.528,0,0,0,.634,1.777,1.755,1.755,0,0,0,1.5.211,1.35,1.35,0,0,0,.824-.858c.543-1.281,1.032-2.584,1.55-3.875.142-.355.28-.712.432-1.064a.548.548,0,0,1,.851-.24.622.622,0,0,1,.185.539,2.161,2.161,0,0,1-.181.621c-.337.852-.68,1.7-1.018,2.552a2.564,2.564,0,0,0-.173.528.624.624,0,0,0,.333.71,1.073,1.073,0,0,0,.814.034,1.22,1.22,0,0,0,.657-.655q.758-1.488,1.511-2.978.35-.687.709-1.37a1.073,1.073,0,0,1,.357-.434.43.43,0,0,1,.463-.016.373.373,0,0,1,.153.387.7.7,0,0,1-.057.236c-.065.157-.127.316-.2.469-.42.883-.846,1.763-1.262,2.648A2.463,2.463,0,0,0,13.4,14.607Zm5.888,6.508a1.09,1.09,0,0,0-2.179.006,1.09,1.09,0,0,0,2.179-.006ZM1.028,12.139a1.038,1.038,0,1,0,.01-2.075,1.038,1.038,0,0,0-.01,2.075ZM13.782.528a1.027,1.027,0,1,0-.011,2.055A1.027,1.027,0,0,0,13.782.528ZM22.21,6.95a.882.882,0,0,0-1.763.011A.882.882,0,0,0,22.21,6.95ZM4.153,4.439a.785.785,0,1,0,.787-.78A.766.766,0,0,0,4.153,4.439Zm8.221,18.22a.676.676,0,1,0-.677.666A.671.671,0,0,0,12.374,22.658ZM22.872,12.2a.674.674,0,0,0-.665.665.656.656,0,0,0,.655.643.634.634,0,0,0,.655-.644A.654.654,0,0,0,22.872,12.2ZM7.171-.123A.546.546,0,0,0,6.613.43a.553.553,0,1,0,1.106,0A.539.539,0,0,0,7.171-.123ZM24.119,9.234a.507.507,0,0,0-.493.488.494.494,0,0,0,.494.494.48.48,0,0,0,.487-.483A.491.491,0,0,0,24.119,9.234Zm-19.454,9.7a.5.5,0,0,0-.488-.488.491.491,0,0,0-.487.5.483.483,0,0,0,.491.479A.49.49,0,0,0,4.665,18.936Z" transform="translate(0 0.123)" fill="#f64060"/>
-      </svg>
-    </a>
-
-    <a class="circle-link" title="Join the Conversation on Discord" href="https://discord.gg/angular" target="_blank" rel="noopener">
-      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 245 240">
-        <title>Discord Logo</title>
-        <path d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zM140.9 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z"/>
-        <path d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z"/>
-      </svg>
-    </a>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-      Love Angular?&nbsp;
-      <a href="https://github.com/angular/angular" target="_blank" rel="noopener"> Give our repo a star.
-        <div class="github-star-badge">
-            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          Star
+<nav class="navbar fixed-top navbar-light bg-light">
+  <a class="navbar-brand" href="#">Fixed top</a>
+</nav>
+<div class="container" style="margin-top: 75px">
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <h2 class="bold">Why Choose Destiny Mastercard <sup>®</sup> ?</h2>
+    </div>
+    <div class="d-flex justify-content-center">
+      <p class="lead" style="width: 65rem">
+        As you plan for the future, having access to a credit card so you can
+        build credit is essential for paving the way. As a Destiny cardholder,
+        you can stay focused on the goals ahead while you improve your credit.
+        Plus, you can use your card with confidence knowing you have the added
+        security a credit card offers.
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="d-flex justify-content-center">
+        <div class="card mt-4 m-2" style="width: 20rem">
+          <div class="d-flex justify-content-center">
+            <img
+              class="card-img-top card3"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAABMCAYAAAC73Y+3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMC1jMDAwIDc5LmRhYmFjYmIsIDIwMjEvMDQvMTQtMDA6Mzk6NDQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMi41IChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGRjRCMkRBMTA2RjkxMUVDQjYxMEE0NkQ0MDBCRkI3RCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGRjRCMkRBMjA2RjkxMUVDQjYxMEE0NkQ0MDBCRkI3RCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZGNEIyRDlGMDZGOTExRUNCNjEwQTQ2RDQwMEJGQjdEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkZGNEIyREEwMDZGOTExRUNCNjEwQTQ2RDQwMEJGQjdEIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+NU49owAAFChJREFUeNrsXQdc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"
+              alt="Card image cap"
+            />
+          </div>
+          <div class="card-body">
+            <h5 class="bold">Feel Confident Building Credit</h5>
+            <p class="card-text lead d-flex justify-content-center">
+              Pre-qualify without impacting your credit score
+            </p>
+          </div>
         </div>
-      </a>
-      <a href="https://github.com/angular/angular" target="_blank" rel="noopener">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-      </a>
-  </footer>
-
-  <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
-    <title>Gray Clouds Background</title>
-    <path id="Path_39" data-name="Path 39" d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z" transform="translate(142.69 -634.312)" fill="#eee"/>
-  </svg>
-
+        <div class="card mt-4 m-2" style="width: 20rem">
+          <div class="d-flex justify-content-center">
+            <img
+              class="card-img-top card3"
+              src="data:image/png;base64,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"
+              alt="Card image cap"
+            />
+          </div>
+          <div class="card-body">
+            <h5 class="bold d-flex justify-content-center">
+              Be Free Moving Forward
+            </h5>
+            <p class="card-text">
+              Use in the U.S. wherever Mastercard is accepted, in-store, in-app,
+              and online
+            </p>
+          </div>
+        </div>
+        <div class="card mt-4 m-2" style="width: 20rem">
+          <div class="d-flex justify-content-center">
+            <img
+              class="card-img-top card3"
+              src="data:image/png;base64,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"
+              alt="Card image cap"
+            />
+          </div>
+          <div class="card-body">
+            <h5 class="bold d-flex justify-content-center">
+              Enjoy a New Level of Security
+            </h5>
+            <p class="card-text">
+              Don’t worry about a lost or stolen card - you’ve got fraud
+              protection
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-<router-outlet></router-outlet>
+<div class="container-fuild mt-2 mb-2">
+  <div class="row" style="background-color: blue; padding: 55px">
+    <div class="d-flex justify-content-center">
+      <button class="btn btn-danger btn-lg m-4" style="font-weight: 600">
+        Pre-Qualify for Destiny Mastercard
+      </button>
+    </div>
+    <p
+      class="d-flex justify-content-center"
+      style="font-weight: 500; color: #fff"
+    >
+      Won’t impact your credit score
+    </p>
+  </div>
+</div>
+<div class="container-fuild">
+  <div class="row d-flex justify-content-center">
+    <img
+      class="center-card m-5"
+      src="https://www.destinycard.com/static/media/cardart.29695e2b.png"
+      alt=""
+    />
+  </div>
+</div>
+<div class="container-fuild">
+  <div class="row">
+    <div class="col-lg-6" style="width: 50%">
+      <img
+        src="https://www.destinycard.com/static/media/everyonebenefits.22880b55.jpg"
+        alt=""
+      />
+    </div>
+    <div class="col-lg-6 bg"></div>
+  </div>
+</div>
