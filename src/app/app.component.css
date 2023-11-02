@@ -1,13 +1,22 @@
-.card3{
+.card3 {
   height: 95px;
   width: 115px;
   margin-bottom: 30px;
 }
-.card{
+.card {
   border: 0 !important;
-
 }
-.center-card{
-
+.center-card {
   width: 41%;
+}
+
+section {
+  color: white;
+}
+.play-icon-box {
+  right: 630px;
+  top: 370px;
+  position: absolute;
+  height: 255px;
+  width: 210px;
 }
